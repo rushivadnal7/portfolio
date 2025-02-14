@@ -115,6 +115,10 @@ export const HeroSection = styled.section`
 export const HeroTitle = styled.h1`
   font-size: 7rem;
   font-weight: bold;
+
+  @media (max-width : 950px) {
+        font-size: 3.5rem;
+    }
 `;
 
 export const HeroSubtitle = styled.p`

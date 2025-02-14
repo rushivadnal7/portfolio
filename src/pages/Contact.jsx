@@ -114,12 +114,22 @@ const ContactWrapper = styled.section`
     text-align: center;
     color: white;
     backdrop-filter: blur(10px);
+
+    form{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
     
     h2 {
+      width: 100%;
       font-size: 24px;
       margin-bottom: 10px;
     }
     p {
+      width: 100%;
       font-size: 16px;
       margin-bottom: 20px;
     }
@@ -136,6 +146,6 @@ const ContactWrapper = styled.section`
     @media (max-width : 950px) {
         width: 100%;
         height: 50%;
-    }
+      }
   }
 `;
