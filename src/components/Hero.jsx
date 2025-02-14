@@ -1,12 +1,26 @@
 // Hero.js
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { HeroSection , HeroTitle, HeroSubtitle, HeroButton} from "../wrappers/Herosection";  
+import { HeroSection, HeroTitle, HeroSubtitle, HeroButton } from "../wrappers/Herosection";
 
 const Hero = ({ projectsRef }) => {
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
   const buttonRef = useRef(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Scroll effect for navbar height
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     gsap.fromTo(
@@ -35,7 +49,7 @@ const Hero = ({ projectsRef }) => {
   };
 
   return (
-    <HeroSection>
+    <HeroSection isScrolled={isScrolled}>
       <HeroTitle ref={titleRef}>WEB DEVELOPER</HeroTitle>
       <HeroSubtitle ref={subtitleRef}>Building modern and scalable web applications</HeroSubtitle>
       <HeroButton

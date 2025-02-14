@@ -5,42 +5,21 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import resolute_rowe_models from "../assets/resolute-rowe-project-images.png";
 import fatigued_models from "../assets/fatigued-project-models.png";
 import atman_model from "../assets/atman-project-model.png";
+import { SiGit, SiNetlify, SiVercel } from "react-icons/si";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
-const projects = [
-    {
-        id: 1,
-        title: "Resolute and Rowe",
-        description:
-            "Developed a responsive and user-friendly e-commerce website for a clothing brand as a freelance project. Features include a drag-and-drop t-shirt customization tool, an interactive 3D logo, secure authentication with bcrypt and JWT, and seamless Razorpay integration for payments.",
-        image: resolute_rowe_models,
-        link: "https://resolute-and-rowe-frontend.vercel.app/",
-    },
-    {
-        id: 2,
-        title: "Fatigued",
-        description:
-            "Building a fully responsive MERN stack workout tracker to enhance fitness journeys with fatigue tracking, progress history, and interactive charts. Features include exercise-based fatigue analysis, visual progress graphs, and scalable API structuring.",
-        image: fatigued_models,
-        link: "https://musclance-frontend-development.netlify.app/",
-    },
-    {
-        id: 3,
-        title: "Atman Foundation",
-        description:
-            "Developed the landing page for The Ātman Foundation, showcasing its mission to empower underprivileged children through education and mentorship, ensuring a seamless and engaging user experience.",
-        image: atman_model,
-        link: "https://atman-foundation.netlify.app/",
-    },
-];
+
 
 const Section = styled.section`
   position: relative;
   height: 100vh;
   overflow: hidden;
-  background: linear-gradient(to bottom, black, #4a148c, black);
+  /* background: linear-gradient(to bottom, black, #4a148c, black); */
+  background: linear-gradient(to bottom, black, purple, black);
 `;
+
 
 const Container = styled.div`
   display: flex;
@@ -90,9 +69,7 @@ const ProjectCard = styled.div`
   width: 60%;
   text-align: center;
   transition: transform 0.3s ease-in-out;
-  &:hover {
-    transform: scale(1.05);
-  }
+  
 
   @media (max-width: 1000px ) {  /* Mobile */
     width: 100%;
@@ -123,12 +100,26 @@ const ProjectInfo = styled.div`
   h2 {
     font-size: 1.875rem;
     font-weight: bold;
+    margin:10px;
   }
   p {
     margin-top: 0.5rem;
     font-size: 0.875rem;
     color: gray;
+    margin:10px;
   }
+  .icon-links{
+    display: flex;
+    gap: 1rem;
+    margin:10px;
+
+    .git-icon , .deployment-icon{
+      &:hover {
+    transform: scale(1.05);
+  }
+    }
+  }
+
 `;
 
 const ProjectImage = styled.img`
@@ -143,81 +134,126 @@ const ProjectImage = styled.img`
 `;
 
 const Projects = () => {
-    const sectionRef = useRef(null);
-    const containerRef = useRef(null);
-    const projectRefs = useRef([]);
+  const sectionRef = useRef(null);
+  const containerRef = useRef(null);
+  const projectRefs = useRef([]);
 
-    useEffect(() => {
-        const section = sectionRef.current;
-        const container = containerRef.current;
-        const projectsCount = projects.length;
+  useEffect(() => {
+    const section = sectionRef.current;
+    const container = containerRef.current;
+    const projectsCount = projects.length;
 
-        let horizontalScroll = gsap.to(container, {
-            x: () => `-${(projectsCount - 1) * 100}vw`,
-            ease: "power1.inOut",
-            scrollTrigger: {
-                trigger: section,
-                start: "top top",
-                end: () => `+=${projectsCount * window.innerWidth}`,
-                scrub: 1,
-                pin: true,
-                anticipatePin: 1,
-                invalidateOnRefresh: true,
-            },
-        });
+    let horizontalScroll = gsap.to(container, {
+      x: () => `-${(projectsCount - 1) * 100}vw`,
+      ease: "power1.inOut",
+      scrollTrigger: {
+        trigger: section,
+        start: "top top",
+        end: () => `+=${projectsCount * window.innerWidth}`,
+        scrub: 1,
+        pin: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+      },
+    });
 
-        projectRefs.current.forEach((el) => {
-            gsap.fromTo(
-                el,
-                { opacity: 0, y: 50 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1,
-                    ease: "power2.out",
-                    scrollTrigger: {
-                        trigger: el,
-                        start: "top 80%",
-                        toggleActions: "play none none none",
-                    },
-                }
-            );
-        });
+    projectRefs.current.forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    });
 
-        return () => {
-            horizontalScroll.kill();
-        };
-    }, []);
-
-    const redirectToProject = (link) => {
-        window.open(`${link}`, "_blank");
+    return () => {
+      horizontalScroll.kill();
     };
+  }, []);
 
-    return (
-        <Section ref={sectionRef}>
-            <Container ref={containerRef}>
-                {projects.map((project, index) => (
-                    <ProjectWrapper
-                        key={index}
-                        ref={(el) => (projectRefs.current[index] = el)}
-                    >
-                        <ProjectCard>
-                            <Overlay />
-                            <ProjectInfo>
-                                <h2>{project.title}</h2>
-                                <p>{project.description}</p>
-                            </ProjectInfo>
-                            <ProjectImage
-                                onClick={() => redirectToProject(project.link)}
-                                src={project.image}
-                                alt={project.title}
-                            />
-                        </ProjectCard>
-                    </ProjectWrapper>
-                ))}
-            </Container>
-        </Section>
-    );
+  const redirectToProject = (link) => {
+    window.open(`${link}`, "_blank");
+  };
+
+  const projects = [
+    {
+      id: 1,
+      title: "Resolute and Rowe",
+      description:
+        "Developed a responsive and user-friendly e-commerce website for a clothing brand as a freelance project. Features include a drag-and-drop t-shirt customization tool, an interactive 3D logo, secure authentication with bcrypt and JWT, and seamless Razorpay integration for payments.",
+      image: resolute_rowe_models,
+      link: "https://resolute-and-rowe-frontend.vercel.app/",
+      deployment: <SiVercel onClick={() => redirectToProject('https://resolute-and-rowe-frontend.vercel.app/')} className="deployment-icon" size={30} />,
+      github: <SiGit onClick={() => redirectToProject('https://github.com/rushivadnal7/RESOLUTE-ROWE')} className="git-icon" size={30} />
+
+    },
+    {
+      id: 2,
+      title: "Fatigued",
+      description:
+        "Building a fully responsive MERN stack workout tracker to enhance fitness journeys with fatigue tracking, progress history, and interactive charts. Features include exercise-based fatigue analysis, visual progress graphs, and scalable API structuring.",
+      image: fatigued_models,
+      link: "https://musclance-frontend-development.netlify.app/",
+      deployment: <SiNetlify onClick={() => redirectToProject("https://musclance-frontend-development.netlify.app/")} className="deployment-icon" size={30} />,
+      github: <SiGit onClick={() => redirectToProject('https://github.com/rushivadnal7/musclance')} className="git-icon" size={30} />
+
+
+    },
+    {
+      id: 3,
+      title: "Atman Foundation",
+      description:
+        "Developed the landing page for The Ātman Foundation, showcasing its mission to empower underprivileged children through education and mentorship, ensuring a seamless and engaging user experience.",
+      image: atman_model,
+      link: "https://atman-foundation.netlify.app/",
+      deployment: <SiNetlify onClick={() => redirectToProject("https://atman-foundation.netlify.app/")} className="deployment-icon" size={30} />,
+      github: <SiGit onClick={() => redirectToProject('https://github.com/rushivadnal7/atman-foundation')} className="git-icon" size={30} />
+
+    },
+  ];
+
+  return (
+    <Section ref={sectionRef}>
+      <Container ref={containerRef}>
+        {projects.map((project, index) => (
+          <ProjectWrapper
+            key={index}
+            ref={(el) => (projectRefs.current[index] = el)}
+          >
+            <ProjectCard>
+              <Overlay />
+              <ProjectInfo>
+                <h2>{project.title}</h2>
+                <p>{project.description}</p>
+                <div className="icon-links">
+                  <div className="github-link">
+                    {project.github}
+                  </div>
+                  <div className="deployment-link">
+                    {project.deployment}
+                  </div>
+                </div>
+              </ProjectInfo>
+              <ProjectImage
+                onClick={() => redirectToProject(project.link)}
+                src={project.image}
+                alt={project.title}
+              />
+            </ProjectCard>
+          </ProjectWrapper>
+        ))}
+      </Container>
+    </Section>
+  );
 };
 
 export default Projects;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled , { keyframes } from "styled-components";
 import { FaBars, FaTimes } from "react-icons/fa"; // Icons for hamburger menu
 
 const Navbar = () => {
@@ -21,12 +21,12 @@ const Navbar = () => {
 
   return (
     <Nav isScrolled={isScrolled}>
-      <Logo>Rushikesh Vadnal</Logo>
+      <Logo isScrolled={isScrolled}>Rushikesh Vadnal</Logo>
 
       <NavLinks isOpen={isOpen}>
-        <NavItem href="#home">Home</NavItem>
-        <NavItem href="#about">About</NavItem>
-        <NavItem href="#contact">Contact</NavItem>
+        <NavItem isScrolled={isScrolled} href="#home">Home</NavItem>
+        <NavItem isScrolled={isScrolled} href="#about">About</NavItem>
+        <NavItem isScrolled={isScrolled} href="#contact">Contact</NavItem>
       </NavLinks>
 
       {/* Hamburger Menu */}
@@ -38,11 +38,18 @@ const Navbar = () => {
 };
 
 // Styled Components
+const glowAnimation = keyframes`
+  0% { text-shadow: 0 0 10px rgba(168, 85, 247, 0.8); }
+  50% { text-shadow: 0 0 20px rgba(168, 85, 247, 1); }
+  100% { text-shadow: 0 0 10px rgba(168, 85, 247, 0.8); }
+`;
+
+
 const Nav = styled.nav`
   width: 100%;
-  height: ${({ isScrolled }) => (isScrolled ? "4rem" : "5rem")};
-  background: ${({ isScrolled }) => (isScrolled ? "transparent" : "black")};
-  color: white;
+  height: ${({ isScrolled }) => (isScrolled ? "4.5rem" : "5.5rem")};
+  background: ${({ isScrolled }) => (isScrolled ? "transparent" : "white")};
+  color: black;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -64,6 +71,9 @@ const Logo = styled.h1`
   font-size: 1.5rem;
   font-weight: bold;
   letter-spacing: 1px;
+  color: ${({ isScrolled }) => (isScrolled ? "white" : "black")};
+  /* animation: ${glowAnimation} 2s ease-in-out infinite; */
+  /* background: linear-gradient(to right, #9b4dff, #8e5ff6); */
 `;
 
 const NavLinks = styled.div`
@@ -88,10 +98,11 @@ const NavLinks = styled.div`
 
 const NavItem = styled.a`
   text-decoration: none;
-  color: white;
+  color: ${({ isScrolled }) => (isScrolled ? "white" : "black")};
   font-size: 1rem;
   font-weight: 500;
   transition: color 0.3s ease-in-out;
+  /* animation: ${glowAnimation} 2s ease-in-out infinite; */
 
   &:hover {
     color: #9b5de5;

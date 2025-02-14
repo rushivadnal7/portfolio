@@ -2,6 +2,7 @@
 import styled from "styled-components";
 
 export const HeroSection = styled.section`
+ margin-top: ${({ isScrolled }) => (isScrolled ? "4.4rem" : "5.5rem")};
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -9,8 +10,10 @@ export const HeroSection = styled.section`
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: linear-gradient(to bottom, #000000, #6a4c9c, #000000);
+  /* background: linear-gradient(to bottom, #000000, #6a4c9c, #000000); */
+  background: linear-gradient(to bottom, black, purple, black);
   color: white;
+  transition: margin-top 0.3s ease;
 `;
 
 export const HeroTitle = styled.h1`
