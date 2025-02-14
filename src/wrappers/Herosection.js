@@ -113,7 +113,7 @@ export const HeroSection = styled.section`
 `;
 
 export const HeroTitle = styled.h1`
-  font-size: 3.75rem;
+  font-size: 7rem;
   font-weight: bold;
 `;
 

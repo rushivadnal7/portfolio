@@ -24,8 +24,8 @@ const Hero = () => {
       <div className="overlay"></div>
 
       {/* Hero Content */}
-      <HeroTitle>WEB DEVELOPER</HeroTitle>
       <HeroSubtitle>Building modern and scalable web applications</HeroSubtitle>
+      <HeroTitle>WEB DEVELOPER</HeroTitle>
       <GradientButton text="View My Work" />
     </HeroSection>
   );
