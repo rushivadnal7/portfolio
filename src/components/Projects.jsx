@@ -90,10 +90,16 @@ const Overlay = styled.div`
 `;
 
 const ProjectInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
   h2 {
     font-size: 1.875rem;
     font-weight: bold;
     margin: 10px;
+    color: white;
+
   }
   p {
     margin-top: 0.5rem;
@@ -117,10 +123,7 @@ const ProjectInfo = styled.div`
   }
   @media (max-width: 950px) {
     height: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: end;
+
   }
 `;
 
