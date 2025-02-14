@@ -1,6 +1,15 @@
+// Projects.jsx
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import {
+    Section,
+    Container,
+    ProjectCard,
+    Overlay,
+    ProjectInfo,
+    ProjectImage
+} from "../wrappers/Project";
 import resolute_rowe_models from '../assets/resolute-rowe-project-images.png';
 import fatigued_models from '../assets/fatigued-project-models.png';
 import atman_model from '../assets/atman-project-model.png';
@@ -78,39 +87,32 @@ const Projects = () => {
         };
     }, []);
 
-
     const redirectToProject = (link) => {
         window.open(`${link}`, "_blank");
-    }
-
+    };
 
     return (
-        <section ref={sectionRef} className="relative h-screen overflow-hidden md:overflow-auto bg-gradient-to-b from-black via-purple-900 to-black">
-            <div ref={containerRef} className="flex md:flex-col h-full w-full md:w-auto">
+        <Section ref={sectionRef}>
+            <Container ref={containerRef}>
                 {projects.map((project, index) => (
-                    <div
+                    <ProjectCard
                         key={index}
                         ref={(el) => (projectRefs.current[index] = el)}
-                        className="flex md:flex-col items-center justify-center w-screen h-full px-10 md:px-0 shrink-0"
                     >
-                        <div className="relative flex gap-10 justify-center items-center p-10 md:p-0 rounded-lg shadow-2xl h-[80%] w-[60%] md:w-full md:h-full md:flex-col text-center transform transition-transform duration-300 hover:scale-105">
-                            <div className="overlay absolute top-0 left-0 w-full h-full bg-white rounded-lg opacity-5 -z-10"></div>
-                            <div className="project-info">
-                                <h2 className="text-3xl font-bold">{project.title}</h2>
-                                <p className="mt-2 md:mt-0 text-sm text-gray-400">{project.description}</p>
-                            </div>
-                            <img
-                                onClick={() => redirectToProject(project.link)}
-                                src={project.image}
-                                alt={project.title}
-                                className="rotate-[270deg] mt-4 md:mt-0 w-auto h-[400px] rounded-lg transition-transform duration-500 transform scale-95 hover:scale-100"
-                            />
-                        </div>
-                    </div>
+                        <Overlay />
+                        <ProjectInfo>
+                            <h2>{project.title}</h2>
+                            <p>{project.description}</p>
+                        </ProjectInfo>
+                        <ProjectImage
+                            onClick={() => redirectToProject(project.link)}
+                            src={project.image}
+                            alt={project.title}
+                        />
+                    </ProjectCard>
                 ))}
-            </div>
-        </section>
-
+            </Container>
+        </Section>
     );
 };
 

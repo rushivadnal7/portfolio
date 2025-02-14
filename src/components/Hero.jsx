@@ -1,5 +1,7 @@
+// Hero.js
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { HeroSection , HeroTitle, HeroSubtitle, HeroButton} from "../wrappers/Herosection";  
 
 const Hero = ({ projectsRef }) => {
   const titleRef = useRef(null);
@@ -33,17 +35,16 @@ const Hero = ({ projectsRef }) => {
   };
 
   return (
-    <section className="h-screen flex flex-col justify-center items-center text-center bg-gradient-to-b from-black via-purple-900 to-black text-white">
-      <h1 ref={titleRef} className="text-6xl font-bold">WEB DEVELOPER</h1>
-      <p ref={subtitleRef} className="text-xl mt-4 opacity-80">Building modern and scalable web applications</p>
-      <button
+    <HeroSection>
+      <HeroTitle ref={titleRef}>WEB DEVELOPER</HeroTitle>
+      <HeroSubtitle ref={subtitleRef}>Building modern and scalable web applications</HeroSubtitle>
+      <HeroButton
         ref={buttonRef}
         onClick={handleScrollToProjects}
-        className="mt-6 px-6 py-3 bg-purple-600 hover:bg-purple-700 transition-all duration-300 rounded-lg text-lg font-semibold"
       >
         View My Work
-      </button>
-    </section>
+      </HeroButton>
+    </HeroSection>
   );
 };
 

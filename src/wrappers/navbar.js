@@ -1,202 +1,82 @@
-import styled from "styled-components";
+import styled, { keyframes } from 'styled-components';
+
+const glowAnimation = keyframes`
+  0% { text-shadow: 0 0 10px rgba(168, 85, 247, 0.8); }
+  50% { text-shadow: 0 0 20px rgba(168, 85, 247, 1); }
+  100% { text-shadow: 0 0 10px rgba(168, 85, 247, 0.8); }
+`;
 
 export const NavbarWrapper = styled.nav`
-  width: 100vw;
-  height: ${({ isScrolled }) => (isScrolled ? "4.5rem" : "5.5rem")};
-  backdrop-filter: blur(40px);
-  box-shadow: 0px 5px 20px black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  height: ${({ isScrolled }) => (isScrolled ? "4rem" : "5rem")};
+  border: 1px solid red;
+  max-width: 100%;
+overflow: hidden;
+
+  background-color: ${({ isScrolled }) => (isScrolled ? "rgba(0, 0, 0, 0.8)" : "black")};
+`;
+
+export const NavbarContent = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 999;
+  padding: 1rem 2rem;
+  width: 100%;
+  border: 1px solid red;
+`;
 
-  /* border-bottom: ${({ isScrolled }) =>
-    isScrolled ? "1px solid white" : ""}; */
+export const HamburgerMenu = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  cursor: pointer;
+`;
 
-  /* Background change on scroll */
-  background-color: ${({ isScrolled }) =>
-    isScrolled ? "transparent" : "white"};
-  color: ${({ isScrolled }) => (isScrolled ? "#40404F" : "black")};
-  transition: background-color 0.3s ease;
-  transition: height 0.3s ease;
+export const MenuDrawer = styled.div`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 66.66%;
+  height: 100vh;
+  background-color: black;
+  transform: ${({ hamburgerMenu }) => (hamburgerMenu ? "translateX(0)" : "translateX(-100%)")};
+  transition: transform 0.5s ease-in-out;
+  overflow: hidden;
+`;
 
-  ul {
-    display: flex;
-    gap: 2.5rem;
-    li {
-      cursor: pointer;
-      text-align: center;
-      font-size: small;
-      transition: all 0.3s ease;
-      text-transform: uppercase;
-    }
-
-    li:hover {
-      scale: 1.05;
-      color: #002147;
-      filter: drop-shadow(0 -1mm 4mm #002147);
-    }
+export const MenuItem = styled.li`
+  cursor: pointer;
+  transition: all 0.3s ease;
+  list-style: none;
+  &:hover {
+    color: #a855f7;
   }
+`;
 
-  .logo {
-    justify-self: center;
-    width: 300px;
-    height: 100%;
-    display: flex;
-    visibility: visible;
-    cursor: grab;
-  }
+export const LogoText = styled.span`
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #9b4dff, #8e5ff6);
+  background-clip: text;
+  color: transparent;
+  animation: ${glowAnimation} 2s ease-in-out infinite;
+`;
 
-  .nav-buttons {
-    display: flex;
-    position: relative;
-    gap: 2rem;
-  }
-
-  .button {
-    transition: all 0.3s ease-in;
-  }
-
-  .nav-buttons .button:hover {
-    scale: 1.05;
-    color: #002147;
-    filter: drop-shadow(0 -1mm 4mm #002147);
-  }
-
-  .hamburger-menu {
+export const NavbarLinks = styled.ul`
+  display: flex;
+  gap: 2.5rem;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  color: #d1d5db;
+  @media (max-width: 768px) {
     display: none;
-  }
-
-  .hamburger{
-    color: ${({ isScrolled }) => (isScrolled ? "#40404F" : "black")};
-  }
-
-  .dropdown-container {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 10px;
-    align-self: center;
-    padding: 1rem;
-    top: 120%;
-    right: 50%;
-    background-color: whitesmoke;
-    /* box-shadow: 3px 3px 15px black; */
-    filter: drop-shadow(0 -2mm 4mm whitesmoke);
-    border-radius: 5px;
-    width: 100px;
-    max-height: 0px;
-    transition: max-height 0.3s ease;
-
-    .orders-button,
-    .auth-button {
-      cursor: pointer;
-    }
-
-    .hover-effect:hover {
-      color: #002147;
-      filter: drop-shadow(0 -1mm 4mm #002147);
-    }
-  }
-
-  .menu{
-    display: none;
-  }
-
-  .dropdown-container.open {
-    max-height: 100px;
-  }
-  .dropdown-container.close {
-    max-height: 0px;
-    visibility: hidden;
-  }
-
- 
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    position: fixed;
-
-
-    .hamburger-menu {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 0.3rem;
-      cursor: pointer;
-      width: 1.7rem;
-      color:black;
-      /* background-color:black; */
-
-      .menu-bar{
-        background-color:gray;
-        width:20px;
-        height:3px;
-        border-radius:8px;
-
-      }
-      
-    }
-    .menu {
-      /* background-color: #1b2a41; */
-      display: flex;
-      flex-direction:column;
-      background-color: black;
-      width: 50%;
-      height: 100vh;
-      position: absolute;
-      top: ${({ isScrolled }) => (isScrolled ? "4.5rem" : "5.5rem")};
-      left: -100%;
-      z-index: 10;
-      transition: all 0.4s ease;
-
-      
-      ul{
-        margin-top:5rem;
-        list-style:none;
-        display:flex;
-        flex-direction:column;
-        
-        gap: 1rem;
-        color:white;
-      }
-    }
-    
-    .open {
-      left: 0;
-    }
-
-    .close {
-      left: -100%;
-    }
-
-    .nav-links {
-      display: none;
-    }
-
-    .logo {
-    display: none; 
-    visibility: hidden; 
-    cursor: pointer;
-  }
-  }
-
-  .cart-button {
-    position: relative;
-  }
-  .cart-count {
-    width: 15px;
-    text-align: center;
-    height: 15px;
-    position: absolute;
-    bottom: 0%;
-    right: -20%;
-    font-size: xx-small;
-    background-color: black;
-    color: white;
-    border-radius: 50%;
   }
 `;
