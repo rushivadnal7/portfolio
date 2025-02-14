@@ -36,24 +36,38 @@ const Contact = () => {
           </div>
           <div className="form-container">
             <h2 className="title">Let's chat.</h2>
-            <p className="paragraph">Freelance inquiry or even a casual meet.</p>
+            <p className="paragraph">
+              Freelance inquiry or even a casual meet.
+            </p>
             <form className="">
-              <input type="text" placeholder="Your Full Name *" className="name-input" required />
-              <input type="email" placeholder="Your Email *" className="email-input" required />
-              <textarea placeholder="Anything you'd like to say *" className="" required />
-              <GradientButton text={'Send to Rushikesh'} />
+              <input
+                type="text"
+                placeholder="Your Full Name *"
+                className="name-input"
+                required
+              />
+              <input
+                type="email"
+                placeholder="Your Email *"
+                className="email-input"
+                required
+              />
+              <textarea
+                placeholder="Anything you'd like to say *"
+                className=""
+                required
+              />
+              <GradientButton text={"Send to Rushikesh"} />
               {/* <button className="">Send to Pravin</button> */}
             </form>
           </div>
         </div>
       </ContactWrapper>
     </>
-
   );
 };
 
 export default Contact;
-
 
 const ContactWrapper = styled.section`
   width: 100vw;
@@ -61,49 +75,67 @@ const ContactWrapper = styled.section`
   margin-top: ${({ isScrolled }) => (isScrolled ? "4.4rem" : "5.5rem")};
   background: linear-gradient(to bottom, black, purple, black);
 
-  .container{
+  .container {
     height: 100%;
     width: 100%;
     display: flex;
+    position: relative;
+
+    @media (max-width : 950px) {
+        flex-direction: column;
+    }
   }
 
-
-  .earth-3d{
+  .earth-3d {
     width: 50%;
     height: 100%;
+
+    @media (max-width : 950px) {
+        width: 100%;
+        height: 50%;
+        /* position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -100; */
+
+    }
   }
-  
-  .form-container{
+
+  .form-container {
     width: 50%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  text-align: center;
-  backdrop-filter: blur(10px);
-  @media (min-width: 768px) {
-    width: 50%;
-  }
-  h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  p {
-    font-size: 16px;
-    margin-bottom: 20px;
-  }
-  input, textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  }
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    backdrop-filter: blur(10px);
+    
+    h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    input,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
 
-`
+    @media (max-width : 950px) {
+        width: 100%;
+        height: 50%;
+    }
+  }
+`;
