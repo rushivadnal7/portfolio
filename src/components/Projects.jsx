@@ -11,297 +11,163 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Section = styled.section`
   position: relative;
-  height: 100vh;
-  overflow: hidden;
-  /* background: linear-gradient(to bottom, black, #4a148c, black); */
   background: linear-gradient(to bottom, black, purple, black);
+  padding: 5rem 0;
 `;
 
 const Container = styled.div`
-  display: flex;
-  height: 100%;
-  width: 100%;
-  -ms-overflow-style: none; /* IE & Edge */
-  ::-webkit-scrollbar {
-    display: none;
+  display: grid;
+  grid-template-areas:
+    "first first"
+    "second third"
+    "fourth fourth";
+  gap: 2rem;
+  padding: 2rem;
+  justify-items: center;
+
+  .first{
+    grid-area: first;
+    width: 100%;
+    /* height: ; */
+  }
+  .second{
+    grid-area: second;
+  }
+  .third{
+    grid-area: third;
+  }
+  .fourth{
+    grid-area: fourth;
   }
 
-  @media (max-width: 950px) {
-    -ms-overflow-style: auto;
-    ::-webkit-scrollbar {
-      display: block;
-    }
-  }
-`;
-
-const ProjectWrapper = styled.div` 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
-  height: 100%;
-  padding: 0 2.5rem;
-  flex-shrink: 0;
-
-  @media (max-width: 950px) {
-    padding: 0;
+  @media (max-width:950px){
+      grid-template-areas:
+    "first"
+    "second"
+    "third"
+    "fourth";
   }
 `;
 
 const ProjectCard = styled.div`
   position: relative;
-  display: flex;
-  gap: 2.5rem;
-  justify-content: center;
-  align-items: center;
-  padding: 2.5rem;
-  border-radius: 1rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  height: 80%;
-  width: 60%;
-  text-align: center;
+  background: transparent;
+  filter: blur(0.9);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease-in-out;
+  overflow: hidden;
+  text-align: center;
+  color: white;
 
-  @media (max-width: 1000px) {
-    /* Mobile */
-    width: 100%;
-  }
 
-  @media (max-width: 950px) {
-    /* Mobile */
-    flex-direction: column;
-    font-size: 14px;
-    width: 100%;
-    height: 100%;
-    gap: 10px;
-  }
-`;
 
-const Overlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: white;
-  border-radius: 1rem;
-  opacity: 0.05;
-  z-index: -1;
-`;
-
-const ProjectInfo = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: end;
-  h2 {
-    font-size: 1.875rem;
-    font-weight: bold;
-    margin: 10px;
-    color: white;
-
-  }
-  p {
-    margin-top: 0.5rem;
-    font-size: 0.875rem;
-    color: gray;
-    margin: 10px;
-  }
-  .icon-links {
-    display: flex;
-    gap: 1rem;
-    margin: 10px;
-
-    .git-icon,
-    .deployment-icon {
-      &:hover {
-        transform: scale(1.05);
-      }
-    }
-
-    
-  }
-  @media (max-width: 950px) {
-    height: 50%;
-
-  }
 `;
 
 const ProjectImage = styled.img`
-  transform: rotate(270deg) scale(0.95);
-  margin-top: 1rem;
-  height: 400px;
-  border-radius: 1rem;
-  transition: transform 0.5s ease-in-out;
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  transform: rotate(270deg);
+  transition: transform 0.3s ease-in-out;
   &:hover {
-    transform: rotate(270deg) scale(1);
+    filter: drop-shadow(0 -6mm 10mm  #002147);
+
   }
 
-  @media (max-width: 950px) {
-    margin-top: 0;
-    height: 50%;
+  @media (max-width:950px){
+
+    &:hover {
+    filter: none;
+
+  }
+  }
+
+`;
+
+const ProjectInfo = styled.div`
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  p {
+    font-size: 1rem;
+    color: #ccc;
+  }
+`;
+
+const Icons = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  
+  .icon {
+    cursor: pointer;
+    transition: transform 0.2s;
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 `;
 
 const Projects = () => {
-
-  const redirectToProject = (link) => {
-    window.open(`${link}`, "_blank");
-  };
-
   const projects = [
     {
       id: 1,
       title: "Resolute and Rowe",
-      description:
-        "Developed a responsive and user-friendly e-commerce website for a clothing brand as a freelance project. Features include a drag-and-drop t-shirt customization tool, an interactive 3D logo, secure authentication with bcrypt and JWT, and seamless Razorpay integration for payments.",
+      description: "Custom t-shirt store with drag & drop features and Razorpay integration.",
       image: resolute_rowe_models,
       link: "https://resolute-and-rowe-frontend.vercel.app/",
-      deployment: (
-        <SiVercel
-          onClick={() =>
-            redirectToProject("https://resolute-and-rowe-frontend.vercel.app/")
-          }
-          className="deployment-icon"
-          size={30}
-        />
-      ),
-      github: (
-        <SiGit
-          onClick={() =>
-            redirectToProject("https://github.com/rushivadnal7/RESOLUTE-ROWE")
-          }
-          className="git-icon"
-          size={30}
-        />
-      ),
+      github: "https://github.com/rushivadnal7/RESOLUTE-ROWE",
+      class: 'first',
     },
     {
       id: 2,
       title: "Fatigued",
-      description:
-        "Building a fully responsive MERN stack workout tracker to enhance fitness journeys with fatigue tracking, progress history, and interactive charts. Features include exercise-based fatigue analysis, visual progress graphs, and scalable API structuring.",
+      description: "MERN-based fitness tracker with fatigue analysis and progress graphs.",
       image: fatigued_models,
       link: "https://musclance-frontend-development.netlify.app/",
-      deployment: (
-        <SiNetlify
-          onClick={() =>
-            redirectToProject(
-              "https://musclance-frontend-development.netlify.app/"
-            )
-          }
-          className="deployment-icon"
-          size={30}
-        />
-      ),
-      github: (
-        <SiGit
-          onClick={() =>
-            redirectToProject("https://github.com/rushivadnal7/musclance")
-          }
-          className="git-icon"
-          size={30}
-        />
-      ),
+      github: "https://github.com/rushivadnal7/musclance",
+      class: 'second',
     },
     {
       id: 3,
       title: "Atman Foundation",
-      description:
-        "Developed the landing page for The Ātman Foundation, showcasing its mission to empower underprivileged children through education and mentorship, ensuring a seamless and engaging user experience.",
+      description: "Landing page for an NGO empowering underprivileged children through education.",
       image: atman_model,
       link: "https://atman-foundation.netlify.app/",
-      deployment: (
-        <SiNetlify
-          onClick={() =>
-            redirectToProject("https://atman-foundation.netlify.app/")
-          }
-          className="deployment-icon"
-          size={30}
-        />
-      ),
-      github: (
-        <SiGit
-          onClick={() =>
-            redirectToProject(
-              "https://github.com/rushivadnal7/atman-foundation"
-            )
-          }
-          className="git-icon"
-          size={30}
-        />
-      ),
+      github: "https://github.com/rushivadnal7/atman-foundation",
+      class: 'third',
+    },
+    {
+      id: 3,
+      title: "Atman Foundation",
+      description: "Landing page for an NGO empowering underprivileged children through education.",
+      image: atman_model,
+      link: "https://atman-foundation.netlify.app/",
+      github: "https://github.com/rushivadnal7/atman-foundation",
+      class: 'fourth',
     },
   ];
 
-  // useEffect(() => {
-  //   const projectsCount = projects.length;
-
-  //   let horizontalScroll = gsap.to(container, {
-  //     x: () => `-${(projectsCount - 1) * 100}vw`,
-  //     ease: "power1.inOut",
-  //     scrollTrigger: {
-  //       trigger: section,
-  //       start: "top top",
-  //       end: () => `+=${projectsCount * window.innerWidth}`,
-  //       scrub: 1,
-  //       pin: true,
-  //       anticipatePin: 1,
-  //       invalidateOnRefresh: true,
-  //     },
-  //   });
-
-  //   projectRefs.current.forEach((el) => {
-  //     gsap.fromTo(
-  //       el,
-  //       { opacity: 0, y: 50 },
-  //       {
-  //         opacity: 1,
-  //         y: 0,
-  //         duration: 1,
-  //         ease: "power2.out",
-  //         scrollTrigger: {
-  //           trigger: el,
-  //           start: "top 80%",
-  //           toggleActions: "play none none none",
-  //         },
-  //       }
-  //     );
-  //   });
-
-  //   return () => {
-  //     horizontalScroll.kill();
-  //     ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-  //   };
-  // }, []);
-
-  
-
   return (
-    <Section >
-      <Container >
+    <Section>
+      <Container>
         {projects.map((project, index) => (
-          <ProjectWrapper
-            key={index}
-            // ref={(el) => (projectRefs.current[index] = el)}
-          >
-            <ProjectCard>
-              <Overlay />
-              <ProjectInfo>
-                <h2>{project.title}</h2>
-                <p>{project.description}</p>
-                <div className="icon-links">
-                  <div className="github-link">{project.github}</div>
-                  <div className="deployment-link">{project.deployment}</div>
-                </div>
-              </ProjectInfo>
-              <ProjectImage
-                onClick={() => redirectToProject(project.link)}
-                src={project.image}
-                alt={project.title}
-              />
-            </ProjectCard>
-          </ProjectWrapper>
+          <ProjectCard className={`${project.class}`} key={index}>
+            <ProjectImage src={project.image} alt={project.title} />
+            <ProjectInfo>
+              <h2>{project.title}</h2>
+              <p>{project.description}</p>
+              <Icons>
+                <SiGit className="icon" size={30} onClick={() => window.open(project.github, "_blank")} />
+                <SiNetlify className="icon" size={30} onClick={() => window.open(project.link, "_blank")} />
+              </Icons>
+            </ProjectInfo>
+          </ProjectCard>
         ))}
       </Container>
     </Section>
