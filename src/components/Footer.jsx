@@ -21,18 +21,21 @@ const Footer = () => {
         <div className="social-icons">
           <SiInstagram
             className="icon"
+            onClick={() => window.open('https://www.instagram.com/rushii.v/', "_blank")}
             onMouseEnter={() => setHoveredIcon("instagram")}
             onMouseLeave={() => setHoveredIcon(null)}
             style={{ color: hoveredIcon === "instagram" ? "#E4405F" : "white" }}
           />
           <SiLinkedin
             className="icon"
+            onClick={() => window.open( 'https://www.linkedin.com/in/rushikesh-vadnal-developer/', "_blank")}
             onMouseEnter={() => setHoveredIcon("linkedin")}
             onMouseLeave={() => setHoveredIcon(null)}
             style={{ color: hoveredIcon === "linkedin" ? "#0A66C2" : "white" }}
-          />
+            />
           <SiGithub
             className="icon"
+            onClick={() => window.open( 'https://github.com/rushivadnal7/', "_blank")}
             onMouseEnter={() => setHoveredIcon("github")}
             onMouseLeave={() => setHoveredIcon(null)}
             style={{ color: hoveredIcon === "github" ? "#f4a261" : "white" }}
