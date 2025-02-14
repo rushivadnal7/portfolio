@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import styled , { keyframes } from "styled-components";
 import { FaBars, FaTimes } from "react-icons/fa"; // Icons for hamburger menu
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate()
 
   // Scroll effect for navbar height
   useEffect(() => {
@@ -24,9 +26,9 @@ const Navbar = () => {
       <Logo isScrolled={isScrolled}>Rushikesh Vadnal</Logo>
 
       <NavLinks isOpen={isOpen}>
-        <NavItem isScrolled={isScrolled} href="#home">Home</NavItem>
-        <NavItem isScrolled={isScrolled} href="#about">About</NavItem>
-        <NavItem isScrolled={isScrolled} href="#contact">Contact</NavItem>
+        <NavItem isScrolled={isScrolled} onClick={() => navigate('/')}>Home</NavItem>
+        <NavItem isScrolled={isScrolled} onClick={() => navigate('/about')}>About</NavItem>
+        <NavItem isScrolled={isScrolled} onClick={() => navigate('/contact')}>Contact</NavItem>
       </NavLinks>
 
       {/* Hamburger Menu */}

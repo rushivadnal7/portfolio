@@ -34,7 +34,7 @@ const Container = styled.div`
   }
 `;
 
-const ProjectWrapper = styled.div`
+const ProjectWrapper = styled.div` 
   display: flex;
   align-items: center;
   justify-content: center;
