@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from "styled-components";
 
 const glowAnimation = keyframes`
   0% { text-shadow: 0 0 10px rgba(168, 85, 247, 0.8); }
@@ -10,16 +10,13 @@ export const NavbarWrapper = styled.nav`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
+  max-width: none;
   z-index: 50;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   height: ${({ isScrolled }) => (isScrolled ? "4rem" : "5rem")};
-  border: 1px solid red;
-  max-width: 100%;
-overflow: hidden;
-
   background-color: ${({ isScrolled }) => (isScrolled ? "rgba(0, 0, 0, 0.8)" : "black")};
 `;
 
@@ -27,9 +24,10 @@ export const NavbarContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
   width: 100%;
-  border: 1px solid red;
+  max-width: 100%;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
 `;
 
 export const HamburgerMenu = styled.div`
@@ -76,6 +74,7 @@ export const NavbarLinks = styled.ul`
   text-transform: uppercase;
   font-size: 0.875rem;
   color: #d1d5db;
+
   @media (max-width: 768px) {
     display: none;
   }

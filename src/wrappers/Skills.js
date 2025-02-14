@@ -2,36 +2,65 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 export const Section = styled.section`
-  padding: 80px 40px;
+  /* padding: 80px 40px; */
+  height: 100vh;
+  width: 100vw;
   background: linear-gradient(to bottom, black, purple, black);
   color: white;
-`;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid red; */
+  `;
 
 export const Container = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
+  /* max-width: 100%; */
+  /* border: 1px solid red; */
+  /* margin: 0 auto; */
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-
-  @media (min-width: 768px) {
-    flex-direction: row;
+  width: 100%;
+  height: 100%;
+  /* flex-wrap: wrap;   */
+  /* flex-direction: row;
+  align-items: center;
+  justify-content: center; */
+  
+  .framer-motion-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    
+    @media (max-width: 950px) {
+      flex-direction: column;
+    }
   }
+  /* @media (max-width: 950px) {
+    flex-direction: column;
+  } */
+
+
 `;
 
 export const SkillsGrid = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
-  width: 50%;
+  width: 40%;
+  /* border: 1px solid red; */
+  padding: 1rem;
 
-  @media (min-width: 768px) {
+  @media (max-width: 950px) {
+    width: 100%;
+    height: 50%;
     grid-template-columns: repeat(4, 1fr);
   }
 
-  @media (min-width: 1024px) {
+  /* @media (min-width: 1024px) {
     grid-template-columns: repeat(5, 1fr);
-  }
+  } */
 `;
 
 export const SkillItem = styled(motion.div)`
@@ -52,12 +81,15 @@ export const SkillText = styled.p`
 `;
 
 export const TextContainer = styled.div`
-  width: 50%;
-  padding-left: 40px;
-  margin-top: 40px;
+  width: 40%;
+  /* border: 1px solid red; */
+  padding: 1rem;
+  /* padding-left: 40px;
+  margin-top: 40px; */
 
-  @media (min-width: 768px) {
-    margin-top: 0;
+  @media (max-width: 950px) {
+    width: 100%;
+    height: 50%;
   }
 `;
 

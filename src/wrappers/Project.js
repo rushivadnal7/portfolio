@@ -4,8 +4,8 @@ export const Section = styled.section`
     position: relative;
     height: 100vh;
     overflow: hidden;
-    width: 100vh;
-    background: linear-gradient(to bottom, black, #6B21A8, black);
+    width: 100vw;
+    background: linear-gradient(to bottom, black,rgb(122, 4, 218), black);
 
     @media (max-width: 768px) {
         overflow: auto;
@@ -15,7 +15,7 @@ export const Section = styled.section`
 export const Container = styled.div`
     display: flex;
     height: 100%;
-    width: 100%;
+    width: 100vw;
 
     @media (max-width: 768px) {
         flex-direction: column;
@@ -27,7 +27,7 @@ export const ProjectCard = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100vw;
+    width: 60%;
     height: 100%;
     padding: 2.5rem;
     flex-shrink: 0;

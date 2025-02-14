@@ -32,6 +32,7 @@ const Skills = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
           viewport={{ once: true }}
+          className="framer-motion-container"
         >
           <SkillsGrid>
             {skills.map((skill, index) => (
@@ -44,14 +45,6 @@ const Skills = () => {
               </SkillItem>
             ))}
           </SkillsGrid>
-        </motion.div>
-  
-        <motion.div 
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          viewport={{ once: true }}
-        >
           <TextContainer>
             <Title>My Skills</Title>
             <Description>
@@ -67,6 +60,15 @@ const Skills = () => {
             </Description>
           </TextContainer>
         </motion.div>
+  
+        {/* <motion.div 
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
+          
+        </motion.div> */}
       </Container>
     </Section>
   );

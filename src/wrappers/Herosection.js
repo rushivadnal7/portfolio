@@ -33,6 +33,7 @@ export const HeroButton = styled.button`
   font-size: 1.125rem; /* text-lg */
   font-weight: 600; /* font-semibold */
   transition: all 0.3s ease;
+  border: none;
   
   &:hover {
     background-color: #5a37b3; /* hover:bg-purple-700 */
