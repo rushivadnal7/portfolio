@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Container,
   HeroSection,
@@ -17,23 +17,31 @@ import GradientButton from "../components/GradientButton";
 
 
 const About = () => {
-   const [isScrolled, setIsScrolled] = useState(false);
-    // Scroll effect for navbar height
-    useEffect(() => {
-      const handleScroll = () => {
-        if (window.scrollY > 50) {
-          setIsScrolled(true);
-        } else {
-          setIsScrolled(false);
-        }
-      };
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
-  
+  const [isScrolled, setIsScrolled] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+
+  useEffect(() => {
+    console.log("Component mounted");
+
+    return () => {
+      console.log("Component unmounted");
+    };
+  }, []);
+
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <Container isScrolled={isScrolled}>
         {/* Hero Section */}
         <HeroSection>
@@ -41,7 +49,7 @@ const About = () => {
           <HeroText>I'M Rushikesh Vadnal</HeroText>
           <WebDevText>WEB DEVELOPER</WebDevText>
           <SubText>UI Designer, Front End Developer</SubText>
-          <GradientButton text={'contact me'}/>
+          <GradientButton text={'contact me'} />
           {/* <ContactButton href="#">Contact Me</ContactButton> */}
         </HeroSection>
 

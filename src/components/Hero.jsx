@@ -2,11 +2,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { HeroSection, HeroTitle, HeroSubtitle, HeroButton } from "../wrappers/Herosection";
+import GradientButton from "../components/GradientButton";
 
-const Hero = ({ projectsRef }) => {
-  const titleRef = useRef(null);
-  const subtitleRef = useRef(null);
-  const buttonRef = useRef(null);
+
+const Hero = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   // Scroll effect for navbar height
@@ -22,25 +21,28 @@ const Hero = ({ projectsRef }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    gsap.fromTo(
-      titleRef.current,
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 1, ease: "power3.out", delay: 0.5 }
-    );
+  
 
-    gsap.fromTo(
-      subtitleRef.current,
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 1, ease: "power3.out", delay: 1 }
-    );
+  // useEffect(() => {
+  //   // if (!titleRef.current) return;
+  //   gsap.fromTo(
+  //     titleRef.current,
+  //     { opacity: 0, y: 50 },
+  //     { opacity: 1, y: 0, duration: 1, ease: "power3.out", delay: 0.5 }
+  //   );
 
-    gsap.fromTo(
-      buttonRef.current,
-      { opacity: 0, scale: 0.5 },
-      { opacity: 1, scale: 1, duration: 0.8, ease: "elastic.out(1, 0.5)", delay: 1.5 }
-    );
-  }, []);
+  //   gsap.fromTo(
+  //     subtitleRef.current,
+  //     { opacity: 0, y: 50 },
+  //     { opacity: 1, y: 0, duration: 1, ease: "power3.out", delay: 1 }
+  //   );
+
+  //   gsap.fromTo(
+  //     buttonRef.current,
+  //     { opacity: 0, scale: 0.5 },
+  //     { opacity: 1, scale: 1, duration: 0.8, ease: "elastic.out(1, 0.5)", delay: 1.5 }
+  //   );
+  // }, []);
 
   const handleScrollToProjects = () => {
     if (projectsRef.current) {
@@ -50,14 +52,9 @@ const Hero = ({ projectsRef }) => {
 
   return (
     <HeroSection isScrolled={isScrolled}>
-      <HeroTitle ref={titleRef}>WEB DEVELOPER</HeroTitle>
-      <HeroSubtitle ref={subtitleRef}>Building modern and scalable web applications</HeroSubtitle>
-      <HeroButton
-        ref={buttonRef}
-        onClick={handleScrollToProjects}
-      >
-        View My Work
-      </HeroButton>
+      <HeroTitle >WEB DEVELOPER</HeroTitle>
+      <HeroSubtitle >Building modern and scalable web applications</HeroSubtitle>
+      <GradientButton text={'view my work'}/>
     </HeroSection>
   );
 };

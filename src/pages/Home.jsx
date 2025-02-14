@@ -1,18 +1,17 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import Skills from '../components/Skill';
 import Projects from '../components/Projects';
 
 const Home = () => {
-  const projectsRef = useRef(null);
 
   return (
     <>
         <Navbar />
-        <Hero projectsRef={projectsRef} />
+        <Hero />
         <Skills />
-        <Projects ref={projectsRef} />
+        <Projects />
         <section className='h-screen w-screen'></section>
     </>
   );

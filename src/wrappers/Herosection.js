@@ -23,7 +23,7 @@ export const HeroTitle = styled.h1`
 
 export const HeroSubtitle = styled.p`
   font-size: 1.25rem; /* Equivalent to text-xl */
-  margin-top: 1rem; /* mt-4 */
+  margin: 1rem 0px; /* mt-4 */
   opacity: 0.8;
 `;
 

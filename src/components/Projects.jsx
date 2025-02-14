@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -144,51 +144,6 @@ const ProjectImage = styled.img`
 `;
 
 const Projects = () => {
-  const sectionRef = useRef(null);
-  const containerRef = useRef(null);
-  const projectRefs = useRef([]);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    const container = containerRef.current;
-    const projectsCount = projects.length;
-
-    let horizontalScroll = gsap.to(container, {
-      x: () => `-${(projectsCount - 1) * 100}vw`,
-      ease: "power1.inOut",
-      scrollTrigger: {
-        trigger: section,
-        start: "top top",
-        end: () => `+=${projectsCount * window.innerWidth}`,
-        scrub: 1,
-        pin: true,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-      },
-    });
-
-    projectRefs.current.forEach((el) => {
-      gsap.fromTo(
-        el,
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 80%",
-            toggleActions: "play none none none",
-          },
-        }
-      );
-    });
-
-    return () => {
-      horizontalScroll.kill();
-    };
-  }, []);
 
   const redirectToProject = (link) => {
     window.open(`${link}`, "_blank");
@@ -279,13 +234,56 @@ const Projects = () => {
     },
   ];
 
+  // useEffect(() => {
+  //   const projectsCount = projects.length;
+
+  //   let horizontalScroll = gsap.to(container, {
+  //     x: () => `-${(projectsCount - 1) * 100}vw`,
+  //     ease: "power1.inOut",
+  //     scrollTrigger: {
+  //       trigger: section,
+  //       start: "top top",
+  //       end: () => `+=${projectsCount * window.innerWidth}`,
+  //       scrub: 1,
+  //       pin: true,
+  //       anticipatePin: 1,
+  //       invalidateOnRefresh: true,
+  //     },
+  //   });
+
+  //   projectRefs.current.forEach((el) => {
+  //     gsap.fromTo(
+  //       el,
+  //       { opacity: 0, y: 50 },
+  //       {
+  //         opacity: 1,
+  //         y: 0,
+  //         duration: 1,
+  //         ease: "power2.out",
+  //         scrollTrigger: {
+  //           trigger: el,
+  //           start: "top 80%",
+  //           toggleActions: "play none none none",
+  //         },
+  //       }
+  //     );
+  //   });
+
+  //   return () => {
+  //     horizontalScroll.kill();
+  //     ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+  //   };
+  // }, []);
+
+  
+
   return (
-    <Section ref={sectionRef}>
-      <Container ref={containerRef}>
+    <Section >
+      <Container >
         {projects.map((project, index) => (
           <ProjectWrapper
             key={index}
-            ref={(el) => (projectRefs.current[index] = el)}
+            // ref={(el) => (projectRefs.current[index] = el)}
           >
             <ProjectCard>
               <Overlay />
