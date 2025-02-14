@@ -49,8 +49,8 @@ const glowAnimation = keyframes`
 
 const Nav = styled.nav`
   width: 100%;
-  height: ${({ $isScrolled }) => ($isScrolled ? "4.5rem" : "5.5rem")};
-  background: ${({ $isScrolled }) => ($isScrolled ? "transparent" : "white")};
+  height: ${({ isScrolled }) => (isScrolled ? "4.5rem" : "5.5rem")};
+  background: ${({ isScrolled }) => (isScrolled ? "transparent" : "black")};
   color: black;
   display: flex;
   justify-content: space-between;
@@ -62,7 +62,8 @@ const Nav = styled.nav`
   box-shadow: 0px 5px 20px black;
   backdrop-filter: blur(40px);
   z-index: 1000;
-  transition: background-color 0.3s ease, height 0.3s ease;
+  transition: background-color 0.3s ease;
+  transition: height 0.3s ease;
   @media (max-width: 768px) {
     padding: 0 1rem;
   }
@@ -72,7 +73,9 @@ const Logo = styled.h1`
   font-size: 1.5rem;
   font-weight: bold;
   letter-spacing: 1px;
-  color: ${({ $isScrolled }) => ($isScrolled ? "white" : "black")};
+  color: ${({ isScrolled }) => (isScrolled ? "white" : "white")};
+  /* animation: ${glowAnimation} 2s ease-in-out infinite; */
+  /* background: linear-gradient(to right, #9b4dff, #8e5ff6); */
 `;
 
 const NavLinks = styled.div`
@@ -89,18 +92,20 @@ const NavLinks = styled.div`
     align-items: center;
     gap: 1rem;
     padding: 1rem 0;
-    transition: transform 0.3s ease-in-out;
-    transform: ${({ $isOpen }) => ($isOpen ? "translateY(0)" : "translateY(-100%)")};
-    display: ${({ $isOpen }) => ($isOpen ? "flex" : "none")};
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transform: ${({ isOpen }) => (isOpen ? "translateY(0)" : "translateY(-20px)")};
+    opacity: ${({ isOpen }) => (isOpen ? "1" : "0")};
+    visibility: ${({ isOpen }) => (isOpen ? "visible" : "hidden")};
   }
 `;
 
 const NavItem = styled.a`
   text-decoration: none;
-  color: ${({ $isScrolled }) => ($isScrolled ? "white" : "black")};
+  color: ${({ isScrolled }) => (isScrolled ? "white" : "white")};
   font-size: 1rem;
   font-weight: 500;
   transition: color 0.3s ease-in-out;
+  /* animation: ${glowAnimation} 2s ease-in-out infinite; */
 
   &:hover {
     color: #9b5de5;
@@ -110,6 +115,7 @@ const NavItem = styled.a`
 const Hamburger = styled.div`
   display: none;
   cursor: pointer;
+  color: white;
 
   @media (max-width: 768px) {
     display: block;

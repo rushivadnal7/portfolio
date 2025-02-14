@@ -70,6 +70,7 @@ export const Text = styled.p`
   font-size: 1rem;
   line-height: 1.8;
   max-width: 800px;
+  text-align: justify;
 `;
 
 export const Button = styled.a`

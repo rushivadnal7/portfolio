@@ -7,7 +7,7 @@ margin: 1rem 0px;
   color: white;
   font-size: 1.2rem;
   font-weight: bold;
-  filter: drop-shadow(0 -6mm 10mm  #002147);
+  filter: drop-shadow(0 -3mm 12mm  #002147);
   padding: 12px 40px;
   border: none;
   border-radius: 30px;

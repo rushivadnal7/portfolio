@@ -39,6 +39,7 @@ const About = () => {
     };
   }, []);
 
+
   return (
     <>
       <Navbar />
@@ -57,11 +58,14 @@ const About = () => {
         <Section>
           <Title>About Me</Title>
           <Text>
-            I’m a Front-End Developer passionate about UI effects, animations, and creating intuitive user experiences.
-            Well-organized, problem solver, and independent with high attention to detail. Fan of technology, outdoor activities,
-            and creative design.
+            Web Developer with expertise in building dynamic and responsive web
+            applications. Specializing in frontend technologies such as React.js, Tailwind CSS,
+            and JavaScript, I have a proven track record of delivering user-friendly interfaces.
+            Additionally, I possess hands-on experience with backend technologies like
+            Express.js and MongoDB, enabling me to create robust full-stack applications that
+            seamlessly integrate functionality with design.
           </Text>
-          <Button href="#">Follow Me</Button>
+          <GradientButton text={'Follow me'} />
         </Section>
 
         {/* Skills Section */}
