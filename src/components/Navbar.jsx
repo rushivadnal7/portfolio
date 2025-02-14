@@ -81,6 +81,7 @@ const Logo = styled.h1`
 const NavLinks = styled.div`
   display: flex;
   gap: 2rem;
+  cursor: pointer;
 
   @media (max-width: 768px) {
     position: absolute;

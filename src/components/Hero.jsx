@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import gsap from "gsap";
 import { HeroSection, HeroTitle, HeroSubtitle } from "../wrappers/Herosection";
 import GradientButton from "../components/GradientButton";
 
-const Hero = () => {
+const Hero = ({ scrollToProjects }) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -26,7 +25,7 @@ const Hero = () => {
       {/* Hero Content */}
       <HeroSubtitle>Building modern and scalable web applications</HeroSubtitle>
       <HeroTitle>WEB DEVELOPER</HeroTitle>
-      <GradientButton text="View My Work" />
+      <GradientButton text="View My Work" onClick={scrollToProjects} />
     </HeroSection>
   );
 };

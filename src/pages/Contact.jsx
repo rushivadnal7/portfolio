@@ -4,6 +4,7 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import GradientButton from "../components/GradientButton";
+import Footer from "../components/Footer";
 
 const Model = () => {
   const { scene } = useGLTF("/planet-transformed.glb");
@@ -63,6 +64,7 @@ const Contact = () => {
           </div>
         </div>
       </ContactWrapper>
+      <Footer/>
     </>
   );
 };

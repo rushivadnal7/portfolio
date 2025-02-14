@@ -14,6 +14,7 @@ import {
 import AboutSkills from "../components/AboutSkills";
 import Navbar from "../components/Navbar";
 import GradientButton from "../components/GradientButton";
+import Footer from "../components/Footer";
 
 
 const About = () => {
@@ -39,7 +40,7 @@ const About = () => {
     };
   }, []);
 
-
+ 
   return (
     <>
       <Navbar />
@@ -49,8 +50,8 @@ const About = () => {
           <HeroText>HI</HeroText>
           <HeroText>I'M Rushikesh Vadnal</HeroText>
           <WebDevText>WEB DEVELOPER</WebDevText>
-          <SubText>UI Designer, Front End Developer</SubText>
-          <GradientButton text={'contact me'} />
+          {/* <SubText>creativity</SubText> */}
+          <GradientButton onClick={() => window.open( 'https://www.linkedin.com/in/rushikesh-vadnal-developer/', "_blank")} text={'contact me'} />
           {/* <ContactButton href="#">Contact Me</ContactButton> */}
         </HeroSection>
 
@@ -65,12 +66,13 @@ const About = () => {
             Express.js and MongoDB, enabling me to create robust full-stack applications that
             seamlessly integrate functionality with design.
           </Text>
-          <GradientButton text={'Follow me'} />
+          <GradientButton onClick={() => window.open( 'https://www.instagram.com/rushii.v/', "_blank")} text={'Follow me'} />
         </Section>
 
         {/* Skills Section */}
         <AboutSkills />
       </Container>
+      <Footer/>
     </>
   );
 };
