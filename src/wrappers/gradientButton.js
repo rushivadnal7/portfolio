@@ -18,7 +18,6 @@ margin: 1rem 0px;
   transition: all 0.3s ease-in-out;
   overflow: hidden;
   
-  /* Glowing Background */
   &::before {
     content: "";
     position: absolute;
@@ -31,7 +30,6 @@ margin: 1rem 0px;
     transition: 0.3s ease-in-out;
   }
 
-  /* Hover Effect */
   &:hover::before {
     filter: blur(15px);
     transform: scale(1.2);

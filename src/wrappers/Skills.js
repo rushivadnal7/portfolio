@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 export const Section = styled.section`
-  /* padding: 80px 40px; */
   height: 100vh;
   width: 100vw;
   background: linear-gradient(to bottom, black, purple, black);
@@ -10,22 +9,15 @@ export const Section = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border: 1px solid red; */
   `;
 
 export const Container = styled.div`
-  /* max-width: 100%; */
-  /* border: 1px solid red; */
-  /* margin: 0 auto; */
+
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
-  /* flex-wrap: wrap;   */
-  /* flex-direction: row;
-  align-items: center;
-  justify-content: center; */
   
   .framer-motion-container{
     display: flex;

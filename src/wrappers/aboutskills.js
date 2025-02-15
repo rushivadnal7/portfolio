@@ -11,7 +11,7 @@ export const SkillBars = styled.div`
   width: 100%;
   max-width: 600px;
   margin-top: 20px;
-  padding: 0 20px; /* Adds padding for better mobile experience */
+  padding: 0 20px;
 
   @media (max-width: 768px) {
     width: 90%;
@@ -28,7 +28,7 @@ export const SkillLabel = styled.p`
   margin-bottom: 5px;
   text-transform: uppercase;
   color: #f39c12;
-  text-align: center; /* Ensures text stays aligned */
+  text-align: center; 
 `;
 
 export const ProgressBar = styled.div`
