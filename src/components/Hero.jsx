@@ -13,6 +13,15 @@ const Hero = ({ scrollToProjects }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = "/CV.pdf";
+    link.download = "Resume_Rushikesh-vadnal.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <HeroSection isScrolled={isScrolled}>
       <div className="glowing-circle circle-1"></div>
@@ -24,6 +33,7 @@ const Hero = ({ scrollToProjects }) => {
       <HeroSubtitle>Building modern and scalable web applications</HeroSubtitle>
       <HeroTitle>WEB DEVELOPER</HeroTitle>
       <GradientButton text="View My Work" onClick={scrollToProjects} />
+      <GradientButton text="Download CV" onClick={handleDownload} />
     </HeroSection>
   );
 };
