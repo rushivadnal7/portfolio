@@ -8,15 +8,12 @@ const Footer = () => {
   const [hoveredIcon, setHoveredIcon] = useState(null);
   return (
     <FooterWrapper>
-      {/* Glowing Circles */}
       {[...Array(12)].map((_, index) => (
         <span key={index} className="glowing-circle"></span>
       ))}
 
-      {/* Blurred Background Behind Content */}
       <div className="blur-overlay"></div>
 
-      {/* Footer Content */}
       <div className="content">
         <div className="social-icons">
           <SiInstagram
@@ -52,7 +49,6 @@ const Footer = () => {
 
 export default Footer;
 
-// Keyframe Animations
 const glow = keyframes`
   0% { opacity: 0.5; transform: scale(1); }
   50% { opacity: 1; transform: scale(1.3); }
@@ -65,7 +61,6 @@ const float = keyframes`
   100% { transform: translate(0, 0); }
 `;
 
-// Styled Footer
 const FooterWrapper = styled.footer`
   width: 100vw;
   height: 8rem;
@@ -79,7 +74,6 @@ const FooterWrapper = styled.footer`
   justify-content: center;
   flex-direction: column;
 
-  /* Blurred Effect Behind Content */
   .blur-overlay {
     position: absolute;
     width: 100%;
@@ -147,7 +141,6 @@ const FooterWrapper = styled.footer`
     animation: ${glow} 2s infinite ease-in-out, ${float} 3s infinite ease-in-out;
   }
 
-  // Random positioning around the edges
   .glowing-circle:nth-child(1) { top: 5px; left: 10%; animation-delay: 0s; }
   .glowing-circle:nth-child(2) { top: 15px; left: 30%; animation-delay: 0.2s; }
   .glowing-circle:nth-child(3) { top: 25px; left: 50%; animation-delay: 0.4s; }

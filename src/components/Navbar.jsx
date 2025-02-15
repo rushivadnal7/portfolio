@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled , { keyframes } from "styled-components";
-import { FaBars, FaTimes } from "react-icons/fa"; // Icons for hamburger menu
+import { FaBars, FaTimes } from "react-icons/fa"; 
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
@@ -8,7 +8,6 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate()
 
-  // Scroll effect for navbar height
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -31,7 +30,6 @@ const Navbar = () => {
         <NavItem isScrolled={isScrolled} onClick={() => navigate('/contact')}>Contact</NavItem>
       </NavLinks>
 
-      {/* Hamburger Menu */}
       <Hamburger onClick={() => setIsOpen(!isOpen)}>
         {isOpen ? <FaTimes size={25} /> : <FaBars size={25} />}
       </Hamburger>
@@ -39,7 +37,6 @@ const Navbar = () => {
   );
 };
 
-// Styled Components
 const glowAnimation = keyframes`
   0% { text-shadow: 0 0 10px rgba(168, 85, 247, 0.8); }
   50% { text-shadow: 0 0 20px rgba(168, 85, 247, 1); }
@@ -74,8 +71,6 @@ const Logo = styled.h1`
   font-weight: bold;
   letter-spacing: 1px;
   color: ${({ isScrolled }) => (isScrolled ? "white" : "white")};
-  /* animation: ${glowAnimation} 2s ease-in-out infinite; */
-  /* background: linear-gradient(to right, #9b4dff, #8e5ff6); */
 `;
 
 const NavLinks = styled.div`
@@ -106,7 +101,6 @@ const NavItem = styled.a`
   font-size: 1rem;
   font-weight: 500;
   transition: color 0.3s ease-in-out;
-  /* animation: ${glowAnimation} 2s ease-in-out infinite; */
 
   &:hover {
     color: #9b5de5;

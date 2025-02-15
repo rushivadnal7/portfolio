@@ -15,14 +15,12 @@ const Hero = ({ scrollToProjects }) => {
 
   return (
     <HeroSection isScrolled={isScrolled}>
-      {/* Multiple Moving Glowing Circles */}
       <div className="glowing-circle circle-1"></div>
       <div className="glowing-circle circle-2"></div>
       <div className="glowing-circle circle-3"></div>
       <div className="glowing-circle circle-4"></div>
       <div className="overlay"></div>
 
-      {/* Hero Content */}
       <HeroSubtitle>Building modern and scalable web applications</HeroSubtitle>
       <HeroTitle>WEB DEVELOPER</HeroTitle>
       <GradientButton text="View My Work" onClick={scrollToProjects} />

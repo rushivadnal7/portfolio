@@ -50,12 +50,9 @@ const About = () => {
           <HeroText>HI</HeroText>
           <HeroText>I'M Rushikesh Vadnal</HeroText>
           <WebDevText>WEB DEVELOPER</WebDevText>
-          {/* <SubText>creativity</SubText> */}
           <GradientButton onClick={() => window.open( 'https://www.linkedin.com/in/rushikesh-vadnal-developer/', "_blank")} text={'contact me'} />
-          {/* <ContactButton href="#">Contact Me</ContactButton> */}
         </HeroSection>
 
-        {/* About Me Section */}
         <Section>
           <Title>About Me</Title>
           <Text>
@@ -69,7 +66,6 @@ const About = () => {
           <GradientButton onClick={() => window.open( 'https://www.instagram.com/rushii.v/', "_blank")} text={'Follow me'} />
         </Section>
 
-        {/* Skills Section */}
         <AboutSkills />
       </Container>
       <Footer/>

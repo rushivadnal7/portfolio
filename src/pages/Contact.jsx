@@ -59,7 +59,6 @@ const Contact = () => {
                 required
               />
               <GradientButton text={"Send to Rushikesh"} />
-              {/* <button className="">Send to Pravin</button> */}
             </form>
           </div>
         </div>
@@ -95,11 +94,6 @@ const ContactWrapper = styled.section`
     @media (max-width : 950px) {
         width: 100%;
         height: 50%;
-        /* position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -100; */
-
     }
   }
 

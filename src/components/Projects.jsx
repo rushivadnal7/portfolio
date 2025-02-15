@@ -5,7 +5,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import resolute_rowe_models from "../assets/resolute-rowe-project-images.png";
 import fatigued_models from "../assets/fatigued-project-models.png";
 import atman_model from "../assets/atman-project-model.png";
-import { SiGit, SiNetlify, SiVercel } from "react-icons/si";
+import { SiGithub, SiNetlify, SiVercel } from "react-icons/si";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -32,7 +32,6 @@ const Container = styled.div`
     img{
       width: 250px;
     }
-    /* height: ; */
   }
   .second {
     grid-area: second;
@@ -73,7 +72,6 @@ const ProjectImage = styled.img`
   height: auto;
   border-radius: 10px;
   margin-bottom: 1rem;
-  /* transform: rotate(270deg); */
   transition: transform 0.3s ease-in-out;
   &:hover {
     transform: scale(1.1);
@@ -139,16 +137,6 @@ const Projects = forwardRef((props, ref) => {
       github: "https://github.com/rushivadnal7/atman-foundation",
       class: "third",
     },
-    // {
-    //   id: 3,
-    //   title: "Atman Foundation",
-    //   description:
-    //     "Landing page for an NGO empowering underprivileged children through education.",
-    //   image: atman_model,
-    //   link: "https://atman-foundation.netlify.app/",
-    //   github: "https://github.com/rushivadnal7/atman-foundation",
-    //   class: "fourth",
-    // },
   ];
 
   return (
@@ -161,16 +149,21 @@ const Projects = forwardRef((props, ref) => {
               <h2>{project.title}</h2>
               <p>{project.description}</p>
               <Icons>
-                <SiGit
+                <SiGithub
                   className="icon"
                   size={30}
                   onClick={() => window.open(project.github, "_blank")}
                 />
-                <SiNetlify
-                  className="icon"
-                  size={30}
-                  onClick={() => window.open(project.link, "_blank")}
-                />
+                {
+                  index === 0 ? <SiVercel className="icon"
+                    size={30}
+                    onClick={() => window.open(project.link, "_blank")} /> :
+                    <SiNetlify
+                      className="icon"
+                      size={30}
+                      onClick={() => window.open(project.link, "_blank")}
+                    />
+                }
               </Icons>
             </ProjectInfo>
           </ProjectCard>
